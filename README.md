@@ -1,4 +1,4 @@
-lcd12864
+liblcd12864
 
 Raspberry PI C library for LCD 12864 128x64 dots graphic display
 
