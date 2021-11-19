@@ -1,1 +1,39 @@
+How to install 
+=======================
+Copy repository:
+git init
+git clone https://github.com/kempny/lcd12864
+cd lcd44780
 
+or 
+
+copy lcd12864_x.x.x.tgz
+unpack: 
+tar -xf lcd12864_x.x.x.tgz
+(change x.x.x to version number)
+cd lcd12864
+
+make
+make install
+make clean
+
+The library will be installed in:
+
+/usr/local/lib
+
+The header file in:
+
+/usr/local/include
+
+
+To uninstall library
+=======================
+
+make uninstall
+
+
+To compile examples
+======================
+
+cd examples
+make
