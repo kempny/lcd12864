@@ -1,0 +1,11 @@
+API - library functions description
+examples/test.c demo program 
+examples/pilogo.pbm - Raspberry PI logo in RAW pbm format
+lcd12864.h library headre files
+font8x8.h - 8x8 dot matrix font
+lcd12864lib.c - the library source code
+INSTALL - installation instruction
+delay.c	interrupt-safe delay routines
+FILES - this file
+
+lcd12864_x.y.x.tgz tar copy of this library, to unpack: tar -xf lcd12864_x.y.z.tgz 
