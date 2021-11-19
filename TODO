@@ -2,3 +2,5 @@ Parallel, 4 - bit and 8 - bit interface
 Other types of animation
 Custom characters 
 0x80 - 0xFF characters in font8x8.h
+Migrate from WiringPi to bcm2835 library
+
