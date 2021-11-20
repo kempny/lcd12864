@@ -1,1 +1,150 @@
-not written yet
+int lcdinit(int rs, int clock, int serial);
+
+  Initialize the display.
+  You can open up to 16 devices at once
+ 
+  Returns file descriptor of opened to LCD connector
+  
+   rs - GPIO pin connected to rs pin of LCD (4)
+   clock - GPIO pin connected to clocl pin of LCD (6)
+   serial - GPIO pin connected to serial pine of LCD (5)
+
+
+void lcdSet(int fdlcd, int disp, int cur, int blin);
+   
+
+   Set display on/off, cursor on/off cursor blinking on/off
+     1 - ON, 0 - OFF, 99 - unchanged
+ 
+   fdlcd - file descriptor returned by lcdinit()
+
+void lcd_graph(int fdlcd);
+   
+   Switch to graphic mode
+
+   fdlcd - file descriptor returned by lcdinit()
+ 
+
+void lcd_alpha(int fdlcd); 
+ 
+
+   Switch to alphanumeric mode
+
+   fdlcd - file descriptor returned by lcdinit()
+
+
+void lcdLoc(int fdlcd, int col, int line);
+  
+  Move cursor to position line, column in alphanumeric mode
+  
+    fdlcd - file descriptor returned by lcdinit()
+
+
+void lcdClr(int fdlcd);
+
+  Clear the screen in alphanumeric mode, move cursor to line 0, column 0
+  
+    fdlcd - file descriptor returned by lcdinit()
+
+
+void lcdChar(int fdlcd, char val);
+
+  Display character val in alphanumeric mode at current cursor position
+  
+    fdlcd - file descriptor returned by lcdinit()
+
+
+void lcdLine(int fdlcd, int x, int y, char* text);
+
+  Display the line of text in alphanumeric, mode
+  truncated on the right if necessary
+   
+   fdlcd - file descriptor returned by lcdinit()
+   x - column to start displaying text
+   y - line to display text
+   text - text to display
+   
+
+void lcdBlock(int fdlcd, int x, int y, char* text);
+  
+  Display block of text in alphanumeric mode, wrap lines, truncated on the
+  end of display if necessary
+
+   fdlcd - file descriptor returned by lcdinit()
+   x, y - start column / line of the displayed text 
+   y - line to display text
+   text - text to display
+   
+
+void lcdRun(int fdlcd, int mode, int speed, int line, char* text);
+
+  Start animation of text. Available in alphanumeric mode only.
+  the animation is done in the thread, you can do other tasks,
+  to stop animation use lcdStop(int fdlcd)
+  You can animate text up to 200 characters long.
+  
+   fdlcd - file descriptor returned by lcdinit()
+   speed - speed of animation, in in 1/10 sec increments
+   line - line of display to show animated text (200 charactersi max)
+   text - string to display and animate
+   mode:
+     0 - at end of displayed text start from begining
+     1 - append begining of text to end of text
+     
+void lcdStop(int fdlcd);
+  
+  Finish animation of text
+  
+   fdlcd - file descriptor returned by lcdinit()
+
+
+void lcd_graph_cls(int fdlcd);
+ 
+
+  Clear the screen in graphic mode, move cursor to line 0, column 0
+  
+    fdlcd - file descriptor returned by lcdinit()
+
+void lcdLocG(int fdlcd, int col, int row);
+
+  Move cursor to position line, column in graphical mode
+  
+    fdlcd - file descriptor returned by lcdinit()
+ 
+
+void lcd_dot(int fdlcd, int x, int y, int color);
+  
+  Display dot at x/y position
+    
+
+    fdlcd - file descriptor returned by lcdinit()
+  
+    x - column
+    y - row
+    color: 1 - set dot, 0 - clear dot 
+  
+
+void lcdCharG(int fdlcd, unsigned int val);
+
+  Display character val in graphical mode at current cursor position
+
+    fdlcd - file descriptor returned by lcdinit()
+
+
+
+void lcdLineG(int fdlcd, int x, int y, char* text);
+
+
+  Display the line of text in graphic mode, truncated on the right if necessary
+
+    fdlcd - file descriptor returned by lcdinit()
+
+
+int lcd_displ_file(int fdlcd, char* filename);
+
+  Display image file in graphical mode . 
+  
+
+    filename of image file in RAWW PBM formet (P4)
+
+    fdlcd - file descriptor returned by lcdinit()
