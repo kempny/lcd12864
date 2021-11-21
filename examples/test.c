@@ -127,7 +127,10 @@ lcd_displ_file(lcd, "./pilogo.pbm");
 
 sleep(1);
 
-lcdLineG(lcd, 10, 23, "Test");
+lcdLineG(lcd, 11, 15, "Test");
+lcdLineG(lcd, 8, 45, "lcd12864");
+lcdLineG(lcd, 8, 55, "library");
+
 
 sleep(2);
 
