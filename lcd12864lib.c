@@ -571,8 +571,9 @@ int x, y;
        {
          send_8(fdlcd, 0x00,  DATA); 
          send_8(fdlcd, 0x00,  DATA); 
-         parm[fdlcd].bufG[x][y] = 0x00;
-         parm[fdlcd].bufG[x + 1][y] = 0x00;
+         parm[fdlcd].bufG[x*2][y] = 0x00;
+         parm[fdlcd].bufG[x*2 + 1][y] = 0x00;
+
        }	
     }
   parm[fdlcd].curx=0;
