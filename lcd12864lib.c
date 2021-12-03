@@ -319,7 +319,7 @@ void lcdLocG(int fdlcd, int col, int row)   {
    else
     {
       send_8(fdlcd, 0x80 |(row-32),  CMD);
-      send_8(fdlcd, 0x88 | col / 2,  CMD);
+      send_8(fdlcd, 0x88 | (col / 2),  CMD);
     }
 
   parm[fdlcd].curx = col;
@@ -555,6 +555,10 @@ void lcd_graph_cls(int fdlcd)
 {
 int x, y;
 
+  lcdLocG(fdlcd,0 ,0);
+  send_8(fdlcd, 0x00,  DATA); 
+  send_8(fdlcd, 0x00,  DATA); 
+
   for(y = 0; y < 64; y++)
     {
       if(y < 32)
@@ -573,7 +577,6 @@ int x, y;
          send_8(fdlcd, 0x00,  DATA); 
          parm[fdlcd].bufG[x*2][y] = 0x00;
          parm[fdlcd].bufG[x*2 + 1][y] = 0x00;
-
        }	
     }
   parm[fdlcd].curx=0;
