@@ -27,6 +27,7 @@
 **     ./test                                                                  **
 ********************************************************************************/
 
+
 #include <string.h> 
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,6 +74,8 @@ lcd=lcdinit(29, 28, 27);
 // switch to graphical mode
 
 lcd_graph(lcd);
+lcd_graph_cls(lcd);
+
 
 lcd_graph_cls(lcd);
 
@@ -131,25 +134,64 @@ lcdLineG(lcd, 11, 15, "Test");
 lcdLineG(lcd, 8, 45, "lcd12864");
 lcdLineG(lcd, 8, 55, "library");
 
-
 sleep(2);
 
 lcd_graph_cls(lcd);
  
+
 for(i=0;i<64;i++)
   lcd_dot(lcd, i+20,i,1);
 for(i=0;i<64;i++)
-  lcd_dot(lcd, i+20,33,1);
+  lcd_dot(lcd, i+20,32,1);
 for(i=0;i<64;i++)
-  lcd_dot(lcd, 86-i,i,1);
+  lcd_dot(lcd, 84-i,i,1);
 for(i=0;i<64;i++)
-  lcd_dot(lcd, 53,i,1);
+  lcd_dot(lcd, 52,i,1);
 
 for(j=1;j<24;j++)
  for(i=0;i<64;i++)
-  lcd_dot(lcd, j * 2 +30,i,0);
+  lcd_dot(lcd, j * 2 + 29,i,0);
 
 sleep(1);
+
+
+lcd_graph_cls(lcd);
+
+ 
+// Display character set
+
+lcd_graph_cls(lcd);
+lcdLocG(lcd, 0, 0);
+for(i=0; i<4; i++)
+ {
+  for(j=0; j<16; j++)
+    lcdCharG(lcd, (i * 16) +j);    
+  lcdLocG(lcd, 0, (i + 1) * 16);  
+ } 
+
+sleep(2);
+
+lcd_graph_cls(lcd);
+lcdLocG(lcd, 0, 0);
+
+for(i=0; i<4; i++)
+ {
+  for(j=0; j<16; j++)
+    lcdCharG(lcd, (i * 16) +j + 64);    
+  lcdLocG(lcd, 0, (i + 1) * 16);  
+ } 
+sleep(2);
+
+lcd_graph_cls(lcd);
+lcdLocG(lcd, 0, 0);
+
+for(i=0; i<4; i++)
+ {
+  for(j=0; j<16; j++)
+    lcdCharG(lcd, (i * 16) +j + 128);    
+  lcdLocG(lcd, 0, (i + 1) * 16);  
+ } 
+sleep(2);
 
 
 
@@ -200,16 +242,6 @@ sleep(2);
 
 //Display animated text
 
-  lcdClr(lcd);
-// Mode 1
-  lcdLine(lcd,0,0,"Scroll mode 1");
-  lcdRun(lcd, 1, 3, 1, "To be or not to be,  ");
-//  lcdRun(lcd, 1, 3, 1, "++To be or not to be -- ");
-  sleep(10);
-  lcdStop(lcd);
-  sleep(2);
-  lcdClr(lcd);
-
 //Mode 0
   lcdLine(lcd,0,0,"Scroll mode 0");
 //  lcdRun(lcd, 0, 2, 1, "To be or not to be, that is the question");
@@ -218,7 +250,17 @@ sleep(2);
   lcdStop(lcd);
   sleep(2);
   lcdClr(lcd);
+
+// Mode 1
+  lcdLine(lcd,0,0,"Scroll mode 1");
+  lcdRun(lcd, 1, 3, 1, "To be or not to be,  ");
+  sleep(10);
+  lcdStop(lcd);
+  sleep(2);
+
+  lcdClr(lcd);
   lcdLine(lcd,4,1,"The End");
+  sleep(3);
 }                              
 
 
