@@ -3,7 +3,7 @@ How to install
 Copy repository:
 git init
 git clone https://github.com/kempny/lcd12864
-cd lcd44780
+cd lcd12864
 
 or 
 
