@@ -13,3 +13,5 @@ Can display images stored in RAW pbm files
 Animation of displayed text
 
 Multithread safe
+
+![](./lcd12864.jpg)
